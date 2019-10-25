@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10 Minutes Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+                <div class="cursor">
+                </div>
+                <div class="mask">
+                        <div class="title">
+                            <div class="line top">
+                                <div class="line-position">
+                                    <div class="txt top">
+                                        <a href="https://github.com/zqartwork" target="_blank"><div class="nav-btn">Visit Github</div></a>
+                                        <div class="nav-btn" @click="isModal = !isModal">Why built this?</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>10 Minutes</p>
+                            <p>Practice</p>
+                            <div class="line bot">
+                                <div class="line-position">
+                                    <div class="txt bot">
+                                        <div class="nav-btn">Created by Zhan-qing</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="container">
+                    <video src="./video/cloud.mp4"></video>
+                </div>
+                <div id="whyModal" v-show="isModal">
+                    <div class="modal-closer">
+                        <div class="modal-position" @click.self="isModal = !isModal">
+                            <div class="modal">
+                                <div class="modal-body">
+                                    <div class="modal-txt">
+                                        This is the project about mousemove event, <br>
+                                        making web UI more profound.
+                                    </div>
+                                    <div class="btn-wrapper">
+                                        <button class="c" @click="isModal = !isModal">GOT IT!</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://npmcdn.com/vue@2.6.10/dist/vue.min.js"></script>
+    <script src="./app.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isModal: false
+            },
+            watch: {
+                isModal: function() {
+                    if(this.isModal) {
+                        var cursor = document.querySelector('.cursor');
+                        cursor.setAttribute('style', 'z-index: 100;')
+                    }
+                    else {
+                        var cursor = document.querySelector('.cursor');
+                        cursor.setAttribute('style', 'z-index: 0;')
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
